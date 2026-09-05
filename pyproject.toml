@@ -1,0 +1,17 @@
+[project]
+name = "customer-support-agent"
+version = "0.1.0"
+description = "TechKart AI Customer Support Agent with LangGraph, RAG, and HITL"
+readme = "README.md"
+authors = [
+    { name = "Rakesh Reddy" }
+]
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["backend/tests"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

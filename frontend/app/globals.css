@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground: 17, 24, 39;
+  --background: 249, 250, 251;
+  --primary: 79, 70, 229;
+  --primary-light: 139, 92, 246;
+}
+
+/* ── Base ────────────────────────────────────────── */
+body {
+  color: rgb(var(--foreground));
+  background: rgb(var(--background));
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Gradient Background Helper ────────────────────── */
+.bg-hero-gradient {
+  background: linear-gradient(135deg, #312e81 0%, #4f46e5 30%, #7c3aed 70%, #a855f7 100%);
+  background-size: 300% 300%;
+  animation: gradientX 6s ease infinite;
+}
+
+/* ── Glass Morphism ────────────────────────────────── */
+.glass {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.glass-dark {
+  background: rgba(30, 27, 75, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ── Gradient Buttons ──────────────────────────────── */
+.btn-gradient {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  transition: all 0.25s ease;
+}
+.btn-gradient:hover {
+  background: linear-gradient(135deg, #4338ca, #6d28d9);
+  box-shadow: 0 8px 25px -5px rgba(79, 70, 229, 0.4);
+  transform: translateY(-1px);
+}
+.btn-gradient:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px -2px rgba(79, 70, 229, 0.3);
+}
+
+.btn-success-gradient {
+  background: linear-gradient(135deg, #059669, #10b981);
+  transition: all 0.25s ease;
+}
+.btn-success-gradient:hover {
+  background: linear-gradient(135deg, #047857, #059669);
+  box-shadow: 0 8px 25px -5px rgba(5, 150, 105, 0.4);
+  transform: translateY(-1px);
+}
+
+.btn-danger-gradient {
+  background: linear-gradient(135deg, #dc2626, #ef4444);
+  transition: all 0.25s ease;
+}
+.btn-danger-gradient:hover {
+  background: linear-gradient(135deg, #b91c1c, #dc2626);
+  box-shadow: 0 8px 25px -5px rgba(220, 38, 38, 0.4);
+  transform: translateY(-1px);
+}
+
+/* ── Animated Underline Links ──────────────────────── */
+.link-underline {
+  position: relative;
+  transition: color 0.2s ease;
+}
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #4f46e5, #7c3aed);
+  border-radius: 1px;
+  transition: width 0.25s ease;
+}
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* ── Card Hover Effect ─────────────────────────────── */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.1),
+              0 0 0 1px rgba(79, 70, 229, 0.06);
+}
+
+/* ── Chat Bubble Animations ────────────────────────── */
+.msg-enter {
+  animation: msgSlideIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes msgSlideIn {
+  0%   { opacity: 0; transform: translateY(12px) scale(0.97); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.typing-dot {
+  animation: typingBounce 1.4s ease-in-out infinite;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.15s; }
+.typing-dot:nth-child(3) { animation-delay: 0.30s; }
+@keyframes typingBounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30%            { transform: translateY(-6px); opacity: 1; }
+}
+
+/* ── Chat Scrollbar ────────────────────────────────── */
+.chat-scrollbar::-webkit-scrollbar { width: 5px; }
+.chat-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.chat-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #c7d2fe, #a5b4fc);
+  border-radius: 10px;
+}
+.chat-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #a5b4fc, #818cf8);
+}
+
+/* ── Loading Skeleton ──────────────────────────────── */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: #e5e7eb;
+  border-radius: 0.5rem;
+}
+.skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+  animation: shimmer 2s linear infinite;
+}
+@keyframes shimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* ── Gradient Text ─────────────────────────────────── */
+.text-gradient {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Focus Ring (Global) ──────────────────────────── */
+input:focus, textarea:focus, button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+}
+
+/* ── Status Dot Animation ──────────────────────────── */
+.status-online {
+  position: relative;
+}
+.status-online::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.3);
+  animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+@keyframes ping {
+  0%   { transform: scale(1); opacity: 0.6; }
+  75%, 100% { transform: scale(2); opacity: 0; }
+}
+
+/* ── Utility Layer ─────────────────────────────────── */
+@layer utilities {
+  .bg-primary { background-color: rgb(var(--primary)); }
+  .text-primary { color: rgb(var(--primary)); }
+  .border-primary { border-color: rgb(var(--primary)); }
+}
